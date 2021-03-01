@@ -10,6 +10,7 @@ import subprocess as sp
 
 def install_rdseed():
     # OS Specific Stuff
+    print("Platform is {}".format(sys.platform))
     if sys.platform == 'linux' or sys.platform == 'darwin':
         dest_dir = os.path.join('/usr','local','bin')
         rdseed_source_file = "v5.3.1-Mod.tar.gz"
