@@ -22,7 +22,9 @@ def install_rdseed():
 
     # Run Make
     op = run_process(['make','clean'])
+    print_process_info(op)
     op = run_process(['make'])
+    print_process_info(op)
 
     # Check Output
     op = run_process(['./rdseed','-h'])
@@ -51,6 +53,11 @@ def run_process(command_list):
     '''
     output = sp.run(command_list,stderr=sp.PIPE,stdout=sp.PIPE)
     return output
+
+def print_process_info(op):
+    print("Return Code = {}".format(op.returncode))
+    print("stdout : \n{}".format(op.stdout.decode()))
+    print("stderr : \n{}".format(op.stderr.decode()))
 
 def main():
     install_rdseed()
