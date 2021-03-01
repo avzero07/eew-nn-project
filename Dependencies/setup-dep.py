@@ -9,12 +9,20 @@ import tarfile
 import subprocess as sp
 
 def install_rdseed():
+    # OS Specific Stuff
+    if sys.platform == 'linux' or sys.platform == 'darwin':
+        dest_dir = os.path.join('/usr','local','bin')
+        rdseed_source_file = "v5.3.1-Mod.tar.gz"
+    elif sys.platform == 'win32':
+        dest_dir = os.path.join(os.environ['WINDIR'],'system32')
+        rdseed_source_file = "v5.3.1-Mod-Win.tar.gz"
+
     # Change Directory to rdseed/
     cur_dir = os.getcwd()
     os.chdir(os.path.join('rdseed'))
     
     # Extract Tar
-    with tarfile.open("v5.3.1-Mod.tar.gz","r:gz") as rdseed_tar:
+    with tarfile.open(rdseed_source_file,"r:gz") as rdseed_tar:
         rdseed_tar.extractall()
 
     # Change Directory
@@ -32,11 +40,6 @@ def install_rdseed():
         print("Make Success; rdseed Seems to be Running!")
 
     # Move rdseed to directory in PATH
-    if sys.platform == 'linux' or sys.platform == 'darwin':
-        dest_dir = os.path.join('/usr','local','bin')
-    elif sys.platform == 'win32':
-        dest_dir = os.path.join(os.environ['WINDIR'],'system32')
-
     shutil.move('rdseed',dest_dir)
 
     # Move Back to Dependencies
