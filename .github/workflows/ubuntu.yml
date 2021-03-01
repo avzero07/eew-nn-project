@@ -39,7 +39,7 @@ jobs:
           cd Dependencies/
           echo $PATH
           which ls
-          python3 -m setup-dep
+          sudo python3 -m setup-dep
 
       - name: Run Data Tests
         run: |
