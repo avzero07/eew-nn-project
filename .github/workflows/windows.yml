@@ -43,9 +43,9 @@ jobs:
           which ls
           gcc --version
           python3 -m setup-dep
-        shell: bash
+        shell: msys2 {0}
 
       - name: Run Data Tests
         run: |
           echo "Hello, Windows"
-        shell: bash
+        shell: msys2 {0}
