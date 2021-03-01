@@ -30,7 +30,7 @@ jobs:
       - name: Setup MSYS2
         uses: msys2/setup-msys2@v2
         with:
-          install: cc gcc make
+          install: gcc make
       - name: Setup python
         uses: actions/setup-python@v2
         with:
