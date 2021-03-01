@@ -39,7 +39,12 @@ jobs:
           cd Dependencies/
           echo $PATH
           which ls
-          sudo python3 -m setup-dep
+          cd rdseed
+          tar -xvf v5.3.1.tar.gz
+          cd rdseed-5.3.1
+          make clean
+          make
+          #sudo python3 -m setup-dep
 
       - name: Run Data Tests
         run: |
