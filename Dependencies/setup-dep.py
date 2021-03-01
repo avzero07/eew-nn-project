@@ -35,7 +35,7 @@ def install_rdseed():
     elif sys.platform == 'win32':
         dest_dir = os.path.join(os.environ['WINDIR'],'system32')
 
-    shutil.move('rdseed',des_dir)
+    shutil.move('rdseed',dest_dir)
 
     # Move Back to Dependencies
     os.chdir(cur_dir)
