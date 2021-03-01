@@ -32,7 +32,7 @@ def install_rdseed():
     # Run Make
     op = run_process(['make','clean'])
     print_process_info(op)
-    op = run_process(['make'])
+    op = run_process(['make','CC=gcc'])
     print_process_info(op)
 
     # Check Output
