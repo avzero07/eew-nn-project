@@ -42,9 +42,9 @@ jobs:
           make clean
           make
           ls -ltr
-          ./rdseed -u
+          ./rdseed -u; echo "probably runs"
           mv rdseed /usr/local/bin/
-          rdseed -u
+          rdseed -u; echo "probably runs"
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
