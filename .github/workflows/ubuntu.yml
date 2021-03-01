@@ -34,9 +34,13 @@ jobs:
           architecture: 'x64'
 
       # Runs a set of commands using the runners shell
-      - name: Run Util Tests
+      - name: Install Dependencies
         run: |
-          echo "Hello, Ubuntu!"
+          cd Dependencies/
+          echo $PATH
+          which ls
+          sudo python3 -m setup-dep
+
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
