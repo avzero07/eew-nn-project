@@ -19,16 +19,24 @@ def install_rdseed():
     os.chdir(os.path.join('rdseed-5.3.1'))
 
     # Run Make
-    sp.check_output(['make','clean'],stderr=sp.STDOUT,shell=True)
-    sp.check_output(['make'],stderr=sp.STDOUT,shell=True)
+    op = run_process(['make','clean'])
+    op = run_process(['make'])
 
     # Check Output
-    rdseed_help_op = sp.check_output(['./rdseed','-h'],stderr=sp.STDOUT,shell=True)
-    return print(rdseed_help_op)
+    op = (['./rdseed','-h'])
+    print(op.stdout.decode())
+
+def run_process(command_list):
+    '''
+    Run a Command in Shell and Return Object
+    Caller can decide what to do in case of
+    error
+    '''
+    output = sp.run(command_list,stderr=sp.PIPE,stdout=sp.PIPE)
+    return output
 
 def main():
-    op = install_rdseed()
-    print(op)
+    install_rdseed()
 
 if __name__ == "__main__":
     main()
