@@ -36,7 +36,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run Util Tests
         run: |
-          echo "Hello, Windows!"
+          cd Dependencies
+          echo $PATH
+          which ls
+          python3 -m setup-dep
+
       - name: Run Data Tests
         run: |
           echo "Hello, Windows"

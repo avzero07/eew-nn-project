@@ -34,7 +34,7 @@ jobs:
           architecture: 'x64'
 
       # Runs a set of commands using the runners shell
-      - name: Install rdseed
+      - name: Install Dependencies
         run: |
           cd Dependencies/
           echo $PATH
