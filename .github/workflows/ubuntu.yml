@@ -42,7 +42,7 @@ jobs:
           make clean
           make
           ls -ltr
-          rdseed -u
+          ./rdseed -u
           mv rdseed /usr/local/bin/
           rdseed -u
       - name: Run Data Tests
