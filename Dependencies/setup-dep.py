@@ -23,7 +23,7 @@ def install_rdseed():
     op = run_process(['make'])
 
     # Check Output
-    op = (['./rdseed','-h'])
+    op = run_process(['./rdseed','-h'])
     print(op.stdout.decode())
 
 def run_process(command_list):
