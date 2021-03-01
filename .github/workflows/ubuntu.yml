@@ -37,7 +37,7 @@ jobs:
       - name: Install rdseed
         run: |
           cd Dependencies/
-          python3 -m setup-dep.py
+          python3 -m setup-dep
           ls -ltr
       - name: Run Data Tests
         run: |
