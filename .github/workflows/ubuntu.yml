@@ -36,15 +36,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install rdseed
         run: |
-          cd Dependencies/rdseed/
-          tar -xvf v5.3.1-Mod.tar.gz
-          cd rdseed-5.3.1
-          make clean
-          make
+          cd Dependencies/
+          python3 -m setup-dep.py
           ls -ltr
-          ./rdseed -u; echo "probably runs"
-          mv rdseed /usr/local/bin/
-          rdseed -u; echo "probably runs"
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
