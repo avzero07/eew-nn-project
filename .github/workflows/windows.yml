@@ -41,6 +41,8 @@ jobs:
           cd Dependencies
           echo $PATH
           which ls
+          gcc --version
+          cc --version
           python3 -m setup-dep
         shell: bash
 
