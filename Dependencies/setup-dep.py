@@ -10,6 +10,10 @@ import subprocess as sp
 
 def install_rdseed():
     # OS Specific Stuff
+    '''
+    TODO: rdseed was not built to compile
+    on windows. Not a priority at this time.
+    '''
     print("Platform is {}".format(sys.platform))
     if sys.platform == 'linux' or sys.platform == 'darwin':
         dest_dir = os.path.join('/usr','local','bin')
@@ -32,7 +36,7 @@ def install_rdseed():
     # Run Make
     op = run_process(['make','clean'])
     print_process_info(op)
-    op = run_process(['make','CC=gcc'])
+    op = run_process(['make'])
     print_process_info(op)
 
     # Check Output
