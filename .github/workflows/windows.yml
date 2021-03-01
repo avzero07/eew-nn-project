@@ -38,11 +38,6 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Dependencies
         run: |
-          cd Dependencies
-          echo $PATH
-          which ls
-          gcc --version
-          python3 -m setup-dep
 
       - name: Run Data Tests
         run: |
