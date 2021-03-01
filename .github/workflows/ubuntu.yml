@@ -38,7 +38,7 @@ jobs:
         run: |
           cd Dependencies/
           python3 -m setup-dep
-          ls -ltr
+          ls -ltr rdseed/
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
