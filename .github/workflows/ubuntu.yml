@@ -41,6 +41,9 @@ jobs:
           cd rdseed-5.3.1
           make clean
           make
+          rdseed -u
+          mv rdseed /usr/local/bin/
+          rdseed -u
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
