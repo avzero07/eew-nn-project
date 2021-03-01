@@ -3,6 +3,7 @@ Script to Install Dependencies
 '''
 
 import os
+import sys
 import tarfile
 import subprocess as sp
 
@@ -24,7 +25,20 @@ def install_rdseed():
 
     # Check Output
     op = run_process(['./rdseed','-h'])
-    print(op.stdout.decode())
+    if "d = read data from tape;" in op.stdout.decode():
+        print("Make Success; rdseed Seems to be Running!")
+
+    # Move rdseed to directory in PATH
+    if sys.platform == 'linux' or sys.platform == 'darwin':
+        dest_dir = os.path.join('/usr','local','bin')
+    else if sys.platform == 'win32':
+        dest_dir = os.path.join(os.environ['WINDIR'],'system32')
+
+    # Move Back to Dependencies
+    os.chdir(cur_dir)
+    op = run_process(['rdseed','-h'])
+    if "d = read data from tape;" in op.stdout.decode():
+        print("Make Success; rdseed Seems to be Running!")
 
 def run_process(command_list):
     '''
