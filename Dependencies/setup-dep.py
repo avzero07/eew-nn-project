@@ -4,6 +4,7 @@ Script to Install Dependencies
 
 import os
 import sys
+import shutil
 import tarfile
 import subprocess as sp
 
@@ -33,6 +34,8 @@ def install_rdseed():
         dest_dir = os.path.join('/usr','local','bin')
     elif sys.platform == 'win32':
         dest_dir = os.path.join(os.environ['WINDIR'],'system32')
+
+    shutil.move('rdseed',des_dir)
 
     # Move Back to Dependencies
     os.chdir(cur_dir)
