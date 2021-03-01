@@ -36,13 +36,11 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install rdseed
         run: |
-          wget https://github.com/iris-edu-legacy/rdseed/archive/v5.3.1.tar.gz
-          tar -xzvf v5.3.1.tar.gz
-          cd rdseed-5.3.1/
+          cd Dependencies/rdseed/
+          tar -xvf v5.3.1-Mod.tar.gz
+          cd rdseed-5.3.1
           make clean
           make
-          ls -ltr
-          
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
