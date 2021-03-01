@@ -43,9 +43,7 @@ jobs:
           which ls
           gcc --version
           python3 -m setup-dep
-        shell: bash
 
       - name: Run Data Tests
         run: |
           echo "Hello, Windows"
-        shell: bash
