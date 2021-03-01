@@ -23,7 +23,8 @@ def install_rdseed():
     sp.check_output(['make'],stderr=sp.STDOUT,shell=True)
 
     # Check Output
-    sp.check_output(['./rdseed','-h'],stderr=sp.STDOUT,shell=True)
+    rdseed_help_op = sp.check_output(['./rdseed','-h'],stderr=sp.STDOUT,shell=True)
+    print(rdseed_help_op)
 
 def main():
     install_rdseed()
