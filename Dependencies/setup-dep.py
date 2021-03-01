@@ -41,7 +41,7 @@ def install_rdseed():
     os.chdir(cur_dir)
     op = run_process(['rdseed','-h'])
     if "d = read data from tape;" in op.stdout.decode():
-        print("Make Success; rdseed Seems to be Running!")
+        print("Copy Successful! rdseed accessible from PATH")
 
 def run_process(command_list):
     '''
