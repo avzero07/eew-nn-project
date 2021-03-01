@@ -40,5 +40,4 @@ jobs:
       - name: Run Data Tests
         run: |
           echo "Hello, Ubuntu!"
-          python3 -m pytest -v
   
