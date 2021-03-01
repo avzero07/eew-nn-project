@@ -38,6 +38,8 @@ jobs:
         run: |
           cd Dependencies/
           python3 -m setup-dep
+          echo $PATH
+          which ls
 
       - name: Run Data Tests
         run: |
