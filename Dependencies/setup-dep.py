@@ -31,7 +31,7 @@ def install_rdseed():
     # Move rdseed to directory in PATH
     if sys.platform == 'linux' or sys.platform == 'darwin':
         dest_dir = os.path.join('/usr','local','bin')
-    else if sys.platform == 'win32':
+    elif sys.platform == 'win32':
         dest_dir = os.path.join(os.environ['WINDIR'],'system32')
 
     # Move Back to Dependencies
