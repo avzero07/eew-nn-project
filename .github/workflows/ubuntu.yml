@@ -36,14 +36,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Run Util Tests
         run: |
-          cd util/
-          pip3 install -r requirements.txt
-          cd test/
-          python3 -m pytest -v
+          echo "Hello, Ubuntu!"
       - name: Run Data Tests
         run: |
-          cd pytorch
-          pip3 install -r requirements.txt
-          cd ..
-          cd data/mnist/test
+          echo "Hello, Ubuntu!"
           python3 -m pytest -v
+  
