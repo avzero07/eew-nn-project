@@ -24,10 +24,11 @@ def install_rdseed():
 
     # Check Output
     rdseed_help_op = sp.check_output(['./rdseed','-h'],stderr=sp.STDOUT,shell=True)
-    print(rdseed_help_op)
+    return print(rdseed_help_op)
 
 def main():
-    install_rdseed()
+    op = install_rdseed()
+    print(op)
 
 if __name__ == "__main__":
     main()
