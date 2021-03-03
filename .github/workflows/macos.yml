@@ -36,6 +36,9 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Dependencies
         run: |
+          cd test
+          pip3 install -r requirements.txt
+          cd ..
           cd dependencies/
           echo $PATH
           which ls
