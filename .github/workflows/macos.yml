@@ -41,6 +41,8 @@ jobs:
           which ls
           sudo python3 -m setup-dep
 
-      - name: Run Data Tests
+      - name: Run Util Tests
         run: |
-          echo "Hello, MacOS!"
+          cd test
+          cd util-tests
+          python3 -m pytest -v
