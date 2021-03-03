@@ -38,7 +38,12 @@ jobs:
       # Runs a set of commands using the runners shell
       - name: Install Dependencies
         run: |
+          cd test
+          pip3 install -r requirements.txt
+          cd ..
 
-      - name: Run Data Tests
+      - name: Run Util Tests
         run: |
-          echo "Hello, Windows"
+          cd test
+          cd util-tests
+          python3 -m pytest -v
