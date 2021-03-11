@@ -13,7 +13,7 @@ class eq_events:
     def add_column(self,col_name,init_val):
         self.data_frame[col_name] = init_val
 
-    def get_date_time(self,dt_col_name,row_num):
+    def get_date_time(self,row_num,dt_col_name='Time'):
         dt = self.data_frame[dt_col_name][row_num]
         dt_list = dt.split('T')
         date_list = dt_list[0].split('-')
