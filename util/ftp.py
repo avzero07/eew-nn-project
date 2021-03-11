@@ -14,5 +14,5 @@ def get_file(ftp_object,filename,target_dir="."):
         print("Downloaded {} to {}".format(filename,target_dir))
 
 def get_dir_list(ftp_object):
-    return ftp.nlst()
+    return ftp_object.nlst()
 
