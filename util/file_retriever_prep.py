@@ -4,6 +4,7 @@ Script to Retrieve and Organize Miniseed Archives
 
 import sys
 import os
+import logging
 from ftplib import FTP
 from event_parser import eq_events
 from ftp import cd, get_file, get_dir_list
@@ -42,9 +43,14 @@ def main():
     os.chdir(sys.argv[2])
     dir_root = os.getcwd()
 
-    # TODO: Each Connection in a Separate Thread
+    # Init Logging
+    logging.basicConfig(filename="file_retriever_prep.log",filemode="w+",
+            level=logging.DEBUG)
+
+    logging.debug("Currently in {}".format(dir_root))
 
     # Start Looping Through List
+    logging.debug("Looping Through List of Events")
     day_labels = set()
     for i in range(events.data_frame.shape[0]):
         if (os.getcwd() != dir_root):
@@ -52,7 +58,7 @@ def main():
         dt = events.get_date_time(i)
         dt_label = get_day_label(dt)
         if dt_label in day_labels:
-            print("Data from {} already present! Skipping".format(dt_label))
+            logging.debug("Data from {} already present! Skipping".format(dt_label))
             continue
 
         day_labels.add(dt_label)
@@ -60,41 +66,40 @@ def main():
         # Check if Year Dir Exists
         year_dir = "{}".format(dt.year)
         if not os.path.isdir(year_dir):
+            logging.info("Creating Directory {} in {}".format(year_dir,os.getcwd()))
             create_dir(year_dir)
         os.chdir(year_dir)
 
         # Check if Month Dir Exists
         month_dir = "{:02d}".format(dt.month)
         if not os.path.isdir(month_dir):
+            logging.info("Creating Directory {} in {}".format(month_dir,os.getcwd()))
             create_dir(month_dir)
         os.chdir(month_dir)
 
         # Check if Day Dir Exists
         day_dir = "{:02d}".format(dt.day)
         if not os.path.isdir(day_dir):
+            logging.info("Creating Directory {} in {}".format(day_dir,os.getcwd()))
             create_dir(day_dir)
         os.chdir(day_dir)
-        print("Current Local Dir : {}".format(os.getcwd()))
- 
+        logging.debug("Current Local Dir : {}".format(os.getcwd()))
+
         with FTP("ftp.seismo.NRCan.gc.ca") as ftp:
             ftp.login()
             cd(ftp,"/wfdata/CN/{}/{}/{}/".format(year_dir,month_dir,day_dir))
             remote_file_list = sorted(get_dir_list(ftp))
             remote_dir = ftp.pwd()
 
+        logging.debug("Creating Manifest File : {} in {}".format("dl_path.txt",
+                                os.getcwd()))
         with open('dl_path.txt','w+') as op_file:
             for f in remote_file_list:
                 for sta in sta_list:
-                    # TODO: Multithreading Logic Here
                     if sta in f:
-                        '''
-                        with FTP("ftp.seismo.NRCan.gc.ca") as ftp_data:
-                            ftp_data.login()
-                            cd(ftp_data,"/wfdata/CN/{}/{}/{}/".format(year_dir,month_dir,day_dir))
-                            get_file(ftp_data,f)
-                        '''
                         op_file.write("{}/{}\n".format(remote_dir,f))
-                        print("Prepped {}".format(os.getcwd()))
+        logging.debug("Prepped Manifest File : {} in {}".format("dl_path.txt",
+                                os.getcwd()))
 
 if __name__ == "__main__":
     main()
